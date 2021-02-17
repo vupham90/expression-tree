@@ -39,11 +39,11 @@ func TestInfixToTree_ComplexCase(t *testing.T) {
 }
 
 func TestInfixToTree_ComplexCaseWithNOTAndSegment(t *testing.T) {
-	node, err := infixToTree([]string{"Region", "=", "\"HCM\"", "AND", "(", "(", "Country", "=", "\"VN\"", "AND", "age", ">", "12", ")", "OR", "Female", "=", "true", ")", "AND", "(", "NOT", "(", "GrabPayUser", ")", "AND", "balance", ">", "100", ")"})
+	node, err := infixToTree([]string{"Region", "=", "\"HCM\"", "AND", "(", "(", "Country", "=", "\"VN\"", "AND", "age", ">", "12", ")", "OR", "Female", "=", "true", ")", "AND", "(", "NOT", "(", "NewUser", ")", "AND", "balance", ">", "100", ")"})
 
 	assert.Nil(t, err)
 	assert.NotNil(t, node)
-	assert.Equal(t, "((Region = \"HCM\") AND ((((Country = \"VN\") AND (age > 12)) OR (Female = true)) AND (NOT (GrabPayUser) AND (balance > 100))))", node.ToQuery())
+	assert.Equal(t, "((Region = \"HCM\") AND ((((Country = \"VN\") AND (age > 12)) OR (Female = true)) AND (NOT (NewUser) AND (balance > 100))))", node.ToQuery())
 }
 
 func TestInfixToTree_InvalidOperator(t *testing.T) {

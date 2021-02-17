@@ -1,5 +1,11 @@
 package tree
 
+func NewStringStack(bufSize int) *stringStack {
+	return &stringStack{
+		data: make([]string, 0, bufSize),
+	}
+}
+
 type stringStack struct {
 	data []string
 }
@@ -29,6 +35,11 @@ func (s *stringStack) push(val string) {
 	s.data = append(s.data, val)
 }
 
+func NewNodeStack(bufSize int) *nodeStack {
+	return &nodeStack{
+		data: make([]*Node, 0, bufSize),
+	}
+}
 
 type nodeStack struct {
 	data []*Node

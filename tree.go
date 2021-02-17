@@ -2,7 +2,7 @@ package tree
 
 import (
 	"errors"
-	"strings"
+	// "strings"
 )
 const (
 	notOp = "NOT"
@@ -75,11 +75,11 @@ if there are no more tokens to read then:
 exit.
 */
 func infixToTree(tokens []string) (*Node, error) {
-	opStk := &stringStack{}
-	outStk := &nodeStack{}
+	opStk := NewStringStack(len(tokens))
+	outStk := NewNodeStack(len(tokens))
 
 	for _, token := range tokens {
-		toUpperToken := strings.ToUpper(token)
+		toUpperToken := token //could be strings.ToUpper(token)
 		if !isOp(toUpperToken) && !isOpenParenthesis(toUpperToken) && !isCloseParenthesis(toUpperToken) {
 			outStk.push(&Node{val: token})
 			continue
